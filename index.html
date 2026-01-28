@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Art de la Photographie - Achraf BECOURI</title>
+    
+    <!-- 1. CSS EXTERNE - Lien vers le fichier externe -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- 2. CSS INTERNE - Styles spécifiques à cette page -->
+    <style>
+        /* Styles spécifiques à la page d'accueil */
+        
+        /* Animation de fond */
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #f5576c);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+
+        /* Hero Header spécifique */
+        .hero-header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 80px 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(102, 126, 234, 0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .profile-section {
+            position: relative;
+            z-index: 1;
+            margin-bottom: 30px;
+        }
+
+        .profile-photo {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 6px solid #667eea;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            margin: 0 auto 25px;
+            display: block;
+            object-fit: cover;
+            animation: fadeInScale 1s ease;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .hero-header h1 {
+            font-size: 56px;
+            background: linear-gradient(135deg, #667eea 0%, #f5576c 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            animation: slideInDown 0.8s ease;
+        }
+
+        /* Grille des sections */
+        .sections-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin: 50px 0;
+        }
+
+        .section-card {
+            background: white;
+            padding: 45px 35px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .section-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--color-start), var(--color-end));
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .section-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .section-card:hover {
+            transform: translateY(-20px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .section-icon {
+            font-size: 70px;
+            margin-bottom: 20px;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+
+        .section-card:hover .section-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .section-card h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .section-card p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .section-card a {
+            display: inline-block;
+            padding: 14px 35px;
+            background: linear-gradient(135deg, var(--color-start), var(--color-end));
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .section-card a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Couleurs spécifiques pour chaque carte */
+        .card-intro {
+            --color-start: #667eea;
+            --color-end: #764ba2;
+        }
+
+        .card-techniques {
+            --color-start: #f093fb;
+            --color-end: #f5576c;
+        }
+
+        .card-equipement {
+            --color-start: #43e97b;
+            --color-end: #38f9d7;
+        }
+
+        .card-galerie {
+            --color-start: #4facfe;
+            --color-end: #00f2fe;
+        }
+
+        .card-ressources {
+            --color-start: #fa709a;
+            --color-end: #fee140;
+        }
+
+        /* Section statistiques */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-box {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-10px);
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #667eea;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+<body>
+    <!-- QR Code -->
+    <div class="qr-code">
+        <img src="images/qr.png" alt="QR Code GitHub">
+    </div>
+
+    <!-- Hero Header avec 3. CSS INLINE pour styles spécifiques -->
+    <header class="hero-header">
+        <div class="profile-section">
+            <img src="images/pfp.jpeg" alt="Photo Achraf BECOURI" class="profile-photo">
+            <h1 style="text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);">L'Art de la Photographie</h1>
+            <p class="subtitle" style="font-size: 24px; color: #667eea; font-weight: 600; margin-bottom: 20px;">
+                Apprenez, Créez, Partagez
+            </p>
+            <p class="description" style="font-size: 18px; color: #666; max-width: 800px; margin: 0 auto; line-height: 1.8;">
+                Bienvenue dans votre guide complet pour maîtriser l'art de la photographie. 
+                De la théorie à la pratique, découvrez tout ce qu'il faut savoir pour capturer 
+                des images exceptionnelles et développer votre propre style photographique.
+            </p>
+        </div>
+    </header>
+
+    <!-- Container principal -->
+    <div class="container">
+        <!-- Section d'introduction avec CSS INLINE -->
+        <section class="content-section" style="background: white; text-align: center; border: 3px solid #667eea;">
+            <h2 style="color: #667eea; font-size: 42px; margin-bottom: 25px; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);">
+                🎯 Explorez le Monde de la Photographie
+            </h2>
+            <p style="font-size: 20px; color: #555; line-height: 1.8; margin: 0 auto 20px; max-width: 900px;">
+                Ce site est votre compagnon dans votre voyage photographique. Que vous soyez débutant 
+                avec votre premier appareil photo ou photographe expérimenté cherchant à perfectionner 
+                vos compétences, vous trouverez ici des ressources précieuses, des techniques éprouvées 
+                et l'inspiration nécessaire pour élever votre art au niveau supérieur.
+            </p>
+            <p style="font-weight: 600; color: #667eea; margin-top: 20px; font-size: 18px;">
+                📸 Sélectionnez une section ci-dessous pour commencer votre apprentissage !
+            </p>
+        </section>
+
+        <!-- Grille des sections -->
+        <div class="sections-grid">
+            <div class="section-card card-intro">
+                <span class="section-icon">📚</span>
+                <h3>Introduction</h3>
+                <p>
+                    Découvrez l'histoire de la photographie, ses principes fondamentaux et 
+                    pourquoi c'est un art accessible à tous.
+                </p>
+                <a href="introduction.html">Commencer →</a>
+            </div>
+
+            <div class="section-card card-techniques">
+                <span class="section-icon">📐</span>
+                <h3>Techniques</h3>
+                <p>
+                    Maîtrisez le triangle d'exposition, la composition et toutes les techniques 
+                    essentielles pour des photos réussies.
+                </p>
+                <a href="techniques.html">Apprendre →</a>
+            </div>
+
+            <div class="section-card card-equipement">
+                <span class="section-icon">📷</span>
+                <h3>Équipement</h3>
+                <p>
+                    Guide complet pour choisir votre appareil, objectifs et accessoires. 
+                    Des conseils pour tous les budgets.
+                </p>
+                <a href="equipement.html">Découvrir →</a>
+            </div>
+
+            <div class="section-card card-galerie">
+                <span class="section-icon">🎨</span>
+                <h3>Galerie de Styles</h3>
+                <p>
+                    Explorez les différents genres photographiques : paysage, portrait, urbain, 
+                    et trouvez votre passion.
+                </p>
+                <a href="galerie.html">Explorer →</a>
+            </div>
+
+            <div class="section-card card-ressources">
+                <span class="section-icon">🌟</span>
+                <h3>Ressources</h3>
+                <p>
+                    Livres, cours en ligne, communautés, logiciels et applications pour 
+                    continuer à progresser.
+                </p>
+                <a href="ressources.html">Consulter →</a>
+            </div>
+        </div>
+
+        <!-- Section statistiques avec CSS INLINE -->
+        <section class="content-section" style="background: white; padding: 60px 40px;">
+            <h2 style="text-align: center; font-size: 38px; color: #667eea; margin-bottom: 50px;">
+                📊 Le Site en Chiffres
+            </h2>
+            <div class="stats-grid">
+                <div class="stat-box" style="border-left: 5px solid #667eea;">
+                    <span class="stat-number">5</span>
+                    <span class="stat-label">Sections Complètes</span>
+                </div>
+                <div class="stat-box" style="border-left: 5px solid #f093fb;">
+                    <span class="stat-number">50+</span>
+                    <span class="stat-label">Techniques Expliquées</span>
+                </div>
+                <div class="stat-box" style="border-left: 5px solid #43e97b;">
+                    <span class="stat-number">100+</span>
+                    <span class="stat-label">Conseils Pratiques</span>
+                </div>
+                <div class="stat-box" style="border-left: 5px solid #fa709a;">
+                    <span class="stat-number">∞</span>
+                    <span class="stat-label">Inspiration</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section citation avec CSS INLINE -->
+        <section class="content-section" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; text-align: center; box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);">
+            <h2 style="color: white; font-size: 32px; font-style: italic; text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.3); line-height: 1.5;">
+                "La photographie est le seul langage qui peut être compris partout dans le monde."
+            </h2>
+            <p style="margin-top: 20px; font-size: 18px; font-weight: 600; color: rgba(255, 255, 255, 0.9);">
+                - Bruno Barbey
+            </p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content" style="max-width: 1200px; margin: 0 auto;">
+            <pre>
+ █████╗  ██████╗██╗  ██╗██████╗  █████╗ ███████╗    ██████╗ ███████╗ ██████╗ ██████╗ ██╗   ██╗██████╗ ██╗
+██╔══██╗██╔════╝██║  ██║██╔══██╗██╔══██╗██╔════╝    ██╔══██╗██╔════╝██╔════╝██╔═══██╗██║   ██║██╔══██╗██║
+███████║██║     ███████║██████╔╝███████║█████╗      ██████╔╝█████╗  ██║     ██║   ██║██║   ██║██████╔╝██║
+██╔══██║██║     ██╔══██║██╔══██╗██╔══██║██╔══╝      ██╔══██╗██╔══╝  ██║     ██║   ██║██║   ██║██╔══██╗██║
+██║  ██║╚██████╗██║  ██║██║  ██║██║  ██║██║         ██████╔╝███████╗╚██████╗╚██████╔╝╚██████╔╝██║  ██║██║
+╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝╚═╝         ╚═════╝ ╚══════╝ ╚═════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝╚═╝
+                                                                                                         
+            </pre>
+            <p style="color: #aaa; margin-bottom: 20px;">
+                Passionné de photographie et de technologie • Data Science • Ingénieur
+            </p>
+
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/achraf-becouri-2b3533255/" target="_blank" style="background: rgba(102, 126, 234, 0.2);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                    </svg>
+                    LinkedIn
+                </a>
+                <a href="https://github.com/Achraf-BECOURI" target="_blank" style="background: rgba(102, 126, 234, 0.2);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                    </svg>
+                    GitHub
+                </a>
+                <a href="https://www.facebook.com/share/1DLdzK5caX/" target="_blank" style="background: rgba(102, 126, 234, 0.2);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/>
+                    </svg>
+                    Facebook
+                </a>
+                <a href="https://www.instagram.com/achrafbecouri" target="_blank" style="background: rgba(102, 126, 234, 0.2);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                    </svg>
+                    Instagram
+                </a>
+                <a href="https://x.com/achrafbecouri" target="_blank" style="background: rgba(102, 126, 234, 0.2);">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                    X (Twitter)
+                </a>
+            </div>
+
+            <div class="copyright">
+                <p>© 2026 Achraf BECOURI - Tous droits réservés</p>
+                <p style="margin-top: 10px; font-size: 13px;">
+                    Fait avec ❤️ et beaucoup de 📸
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

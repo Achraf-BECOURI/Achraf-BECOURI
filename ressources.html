@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ressources - Achraf BECOURI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: #333;
+            line-height: 1.8;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 42px;
+            color: #fff;
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            padding: 15px 35px;
+            border-radius: 15px;
+            display: inline-block;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 25px rgba(250, 112, 154, 0.4);
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #fa709a;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            background: #fa709a;
+            color: white;
+            box-shadow: 0 5px 15px rgba(250, 112, 154, 0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            color: #fa709a;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        .content-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .content-section h3 {
+            color: #fa709a;
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #fa709a;
+            padding-bottom: 10px;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .resource-card {
+            background: linear-gradient(135deg, #fff 0%, #fff5f7 100%);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid #fa709a;
+            transition: transform 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .resource-card h4 {
+            color: #fa709a;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .resource-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .resource-card li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .resource-card li:last-child {
+            border-bottom: none;
+        }
+
+        .resource-card li::before {
+            content: "▸ ";
+            color: #fa709a;
+            font-weight: bold;
+        }
+
+        .platform-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            border-left: 5px solid;
+            transition: all 0.3s;
+        }
+
+        .platform-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transform: translateX(10px);
+        }
+
+        .platform-card h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .platform-card p {
+            color: #666;
+            font-size: 14px;
+        }
+
+        .youtube { border-left-color: #ff0000; }
+        .instagram { border-left-color: #e4405f; }
+        .flickr { border-left-color: #0063dc; }
+        .behance { border-left-color: #1769ff; }
+        .unsplash { border-left-color: #111111; }
+        .reddit { border-left-color: #ff4500; }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-size: 16px;
+        }
+
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background: #fff5f7;
+        }
+
+        .contact-box {
+            background: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(67, 233, 123, 0.4);
+        }
+
+        .contact-box h3 {
+            color: white;
+            border: none;
+            margin-bottom: 15px;
+        }
+
+        .contact-box a {
+            display: inline-block;
+            background: white;
+            color: #43e97b;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 10px;
+            transition: all 0.3s;
+        }
+
+        .contact-box a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #fa709a;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📚 Ressources et Apprentissage</h1>
+        <p style="margin-top: 15px; color: #fa709a; font-weight: 600;">Continuez à progresser</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" class="btn-home">🏠 Accueil</a></li>
+            <li><a href="introduction.html">Introduction</a></li>
+            <li><a href="techniques.html">Techniques</a></li>
+            <li><a href="equipement.html">Équipement</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="ressources.html" class="active">Ressources</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h2>Continuez Votre Apprentissage</h2>
+            <p>
+                La photographie est un voyage sans fin. Voici une sélection de ressources pour vous aider 
+                à progresser, vous inspirer et rester connecté avec la communauté photographique mondiale.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h3>📚 Livres Incontournables</h3>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>📖 Pour Débuter</h4>
+                    <ul>
+                        <li>La Photo Numérique pour les Nuls - Julie Adair King</li>
+                        <li>Le Grand Cours de Photo - David Taylor</li>
+                        <li>Apprendre la Photographie - Nicolas Croce</li>
+                        <li>Réussir ses Photos - Thierry Vincent</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h4>🎨 Composition & Créativité</h4>
+                    <ul>
+                        <li>L'Œil du Photographe - Michael Freeman</li>
+                        <li>La Vision du Photographe - Michael Freeman</li>
+                        <li>L'Art de la Composition - Feininger Andreas</li>
+                        <li>Voir & Comprendre - Bryan Peterson</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h4>💡 Technique & Maîtrise</h4>
+                    <ul>
+                        <li>Comprendre l'Exposition - Bryan Peterson</li>
+                        <li>Le Guide Complet de la Photo - National Geographic</li>
+                        <li>L'Éclairage en Studio - Scott Kelby</li>
+                        <li>Maîtriser Lightroom - Martin Evening</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h4>🌟 Inspiration & Histoire</h4>
+                    <ul>
+                        <li>Magnum Photos : L'Histoire - Russell Miller</li>
+                        <li>Le Baiser de l'Hôtel de Ville - Robert Doisneau</li>
+                        <li>The Americans - Robert Frank</li>
+                        <li>Ansel Adams : Une Autobiographie</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h3>🎓 Plateformes d'Apprentissage en Ligne</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Plateforme</th>
+                        <th>Type de Contenu</th>
+                        <th>Prix</th>
+                        <th>Niveau</th>
+                        <th>Points Forts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>YouTube</strong></td>
+                        <td>Tutoriels vidéo gratuits</td>
+                        <td>Gratuit</td>
+                        <td>Tous niveaux</td>
+                        <td>Immense bibliothèque, toujours à jour</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Udemy</strong></td>
+                        <td>Cours complets structurés</td>
+                        <td>10€ - 200€ / cours</td>
+                        <td>Débutant à Avancé</td>
+                        <td>Certificats, accès à vie</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Coursera</strong></td>
+                        <td>Cours universitaires</td>
+                        <td>Gratuit (audit) / 50€+ (certif)</td>
+                        <td>Intermédiaire à Avancé</td>
+                        <td>Qualité académique, prestigieux</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Skillshare</strong></td>
+                        <td>Cours créatifs courts</td>
+                        <td>15€/mois</td>
+                        <td>Tous niveaux</td>
+                        <td>Communauté active, projets pratiques</td>
+                    </tr>
+                    <tr>
+                        <td><strong>MasterClass</strong></td>
+                        <td>Cours par célébrités</td>
+                        <td>15€/mois</td>
+                        <td>Intermédiaire</td>
+                        <td>Annie Leibovitz, Jimmy Chin</td>
+                    </tr>
+                    <tr>
+                        <td><strong>KelbyOne</strong></td>
+                        <td>Formation photo/Lightroom</td>
+                        <td>20€/mois</td>
+                        <td>Tous niveaux</td>
+                        <td>Spécialisé photographie</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h3>🌐 Communautés et Réseaux</h3>
+            
+            <div class="platform-card youtube">
+                <h4>📺 YouTube - Chaînes Recommandées</h4>
+                <p>
+                    <strong>Francophones :</strong> Objectif Photographe, Apprendre la Photo, Studio Pixel <br>
+                    <strong>Anglophones :</strong> Peter McKinnon, Manny Ortiz, The Art of Photography, Thomas Heaton
+                </p>
+            </div>
+
+            <div class="platform-card instagram">
+                <h4>📷 Instagram</h4>
+                <p>
+                    Partagez votre travail, découvrez des photographes talentueux, suivez les hashtags #photography, 
+                    #photooftheday, #landscapephotography. Rejoignez des défis photo quotidiens.
+                </p>
+            </div>
+
+            <div class="platform-card flickr">
+                <h4>📸 Flickr</h4>
+                <p>
+                    L'une des plus anciennes communautés photo. Groupes thématiques, critiques constructives, 
+                    portfolios professionnels. Idéal pour recevoir des feedbacks détaillés.
+                </p>
+            </div>
+
+            <div class="platform-card behance">
+                <h4>🎨 Behance</h4>
+                <p>
+                    Plateforme professionnelle d'Adobe. Présentez vos projets photo, découvrez du travail de haute qualité, 
+                    connectez avec des clients potentiels et d'autres créatifs.
+                </p>
+            </div>
+
+            <div class="platform-card unsplash">
+                <h4>🖼️ Unsplash</h4>
+                <p>
+                    Partagez vos meilleures photos gratuitement. Excellente visibilité, vos photos peuvent être vues 
+                    par des millions de personnes. Construisez votre réputation.
+                </p>
+            </div>
+
+            <div class="platform-card reddit">
+                <h4>💬 Reddit - r/photography</h4>
+                <p>
+                    Communauté active avec discussions techniques, critiques de portfolio, questions-réponses. 
+                    Sous-reddits spécialisés : r/photocritique, r/portraits, r/EarthPorn.
+                </p>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h3>🎯 Défis et Projets Photographiques</h3>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>📅 Défis Quotidiens</h4>
+                    <ul>
+                        <li>365 Project : Une photo par jour pendant un an</li>
+                        <li>52 Weeks Challenge : Un thème par semaine</li>
+                        <li>Instagram Daily Challenges (#photooftheday)</li>
+                        <li>30 Days of Photography Challenge</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h4>🎨 Projets Créatifs</h4>
+                    <ul>
+                        <li>Documenter votre ville/quartier</li>
+                        <li>Portrait de 100 inconnus</li>
+                        <li>Série thématique (couleurs, motifs)</li>
+                        <li>Projet de famille/amis sur le long terme</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h4>🏆 Concours Photo</h4>
+                    <ul>
+                        <li>National Geographic Photo Contest</li>
+                        <li>Sony World Photography Awards</li>
+                        <li>International Photography Awards</li>
+                        <li>Concours locaux et régionaux</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h4>📖 Photo Essays</h4>
+                    <ul>
+                        <li>Racontez une histoire en 10-20 images</li>
+                        <li>Documentez un événement ou sujet</li>
+                        <li>Créez un photobook sur un thème</li>
+                        <li>Exposition photo personnelle</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h3>🛠️ Logiciels et Outils</h3>
+            
+            <table>
+                <thead>
+                    <tr>
+                        <th>Logiciel</th>
+                        <th>Fonction</th>
+                        <th>Prix</th>
+                        <th>Plateforme</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Adobe Lightroom</strong></td>
+                        <td>Retouche RAW, catalogage, organisation</td>
+                        <td>12€/mois</td>
+                        <td>Windows, Mac, iOS, Android</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Adobe Photoshop</strong></td>
+                        <td>Retouche avancée, compositing, créations</td>
+                        <td>24€/mois (ou avec Lightroom)</td>
+                        <td>Windows, Mac, iPad</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Capture One</strong></td>
+                        <td>Retouche RAW professionnelle</td>
+                        <td>16€/mois ou 300€</td>
+                        <td>Windows, Mac</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Luminar Neo</strong></td>
+                        <td>Retouche IA, effets créatifs</td>
+                        <td>15€/mois ou 150€</td>
+                        <td>Windows, Mac</td>
+                    </tr>
+                    <tr>
+                        <td><strong>DxO PhotoLab</strong></td>
+                        <td>Correction optique, réduction bruit</td>
+                        <td>130€ - 200€</td>
+                        <td>Windows, Mac</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GIMP</strong></td>
+                        <td>Alternative gratuite à Photoshop</td>
+                        <td>Gratuit</td>
+                        <td>Windows, Mac, Linux</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Darktable</strong></td>
+                        <td>Alternative gratuite à Lightroom</td>
+                        <td>Gratuit</td>
+                        <td>Windows, Mac, Linux</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Affinity Photo</strong></td>
+                        <td>Alternative abordable à Photoshop</td>
+                        <td>70€ (achat unique)</td>
+                        <td>Windows, Mac, iPad</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="content-section">
+            <h3>📱 Applications Mobiles Essentielles</h3>
+            
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <h4>📸 Prise de Vue</h4>
+                    <ul>
+                        <li>ProCamera (iOS) - Contrôles manuels complets</li>
+                        <li>Camera FV-5 (Android) - Mode manuel avancé</li>
+                        <li>Halide (iOS) - Interface épurée, RAW</li>
+                        <li>Open Camera (Android) - Gratuit, fonctionnel</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h4>✨ Retouche Mobile</h4>
+                    <ul>
+                        <li>Lightroom Mobile - Gratuit, puissant</li>
+                        <li>Snapseed - Gratuit Google, excellent</li>
+                        <li>VSCO - Filtres populaires, communauté</li>
+                        <li>Darkroom (iOS) - Interface intuitive</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h4>🌅 Planification</h4>
+                    <ul>
+                        <li>PhotoPills - Soleil, lune, Voie lactée</li>
+                        <li>The Photographer's Ephemeris - Heures dorées</li>
+                        <li>Sun Surveyor - AR pour visualiser la lumière</li>
+                        <li>Clear Outside - Météo pour photographes</li>
+                    </ul>
+                </div>
+
+                <div class="resource-card">
+                    <h4>📊 Gestion & Partage</h4>
+                    <ul>
+                        <li>Instagram - Réseau social photo</li>
+                        <li>Portfolio (par Adobe) - Portfolio mobile</li>
+                        <li>Flickr - Communauté, backup</li>
+                        <li>Google Photos - Stockage illimité gratuit</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-box">
+            <h3>📬 Restons en Contact !</h3>
+            <p style="font-size: 18px; margin-bottom: 25px;">
+                Des questions ? Besoin de conseils personnalisés ? N'hésitez pas à me contacter !
+            </p>
+            <a href="mailto:achrafbecouri@gmail.com">📧 achrafbecouri@gmail.com</a>
+            <a href="https://www.linkedin.com/in/achraf-becouri-2b3533255/" target="_blank">💼 LinkedIn</a>
+            <a href="https://github.com/Achraf-BECOURI" target="_blank">🐙 GitHub</a>
+        </div>
+    </div>
+
+    <footer>
+        <p style="margin-top: 10px;">
+            <a href="galerie.html">← Galerie</a> | 
+            <a href="introduction.html">Retour au Début →<br></a>
+            <a href="index.html"><br>🏠 Retour à l'Accueil</a>
+        </p>
+        
+        <p style="margin-top: 20px; font-size: 14px; color: #aaa;">
+            Merci d'avoir exploré ce guide de la photographie ! Continuez à pratiquer et à créer. 📸
+        </p>
+        <p><br>© 2026 Achraf BECOURI - Tous droits réservés</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introduction à la Photographie - Achraf BECOURI</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            line-height: 1.8;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        h1 {
+            font-size: 42px;
+            color: #fff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 35px;
+            border-radius: 15px;
+            display: inline-block;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.4);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        nav {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #667eea;
+            font-weight: 600;
+            font-size: 16px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: all 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            background: #667eea;
+            color: white;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .hero h2 {
+            color: #667eea;
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #555;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .content-section {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+        }
+
+        .content-section h3 {
+            color: #667eea;
+            font-size: 28px;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+
+        .timeline {
+            position: relative;
+            padding-left: 40px;
+            margin: 30px 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 30px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -44px;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 4px solid white;
+            box-shadow: 0 0 0 4px #667eea;
+        }
+
+        .timeline-item h4 {
+            color: #667eea;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .info-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%);
+            border-left: 5px solid #ffc107;
+            padding: 25px;
+            border-radius: 10px;
+            margin: 25px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-box h4 {
+            color: #d68910;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        .grid-2col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card h4 {
+            color: #667eea;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #555;
+        }
+
+        .quote {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            margin: 40px 0;
+            text-align: center;
+            font-size: 24px;
+            font-style: italic;
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 32px;
+            }
+
+            .hero h2 {
+                font-size: 28px;
+            }
+
+            .grid-2col {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📸 Introduction à la Photographie</h1>
+        <p style="margin-top: 15px; color: #667eea; font-weight: 600;">Découvrez l'art de capturer la lumière</p>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html" class="btn-home">🏠 Accueil</a></li>
+            <li><a href="introduction.html" class="active">Introduction</a></li>
+            <li><a href="techniques.html">Techniques</a></li>
+            <li><a href="equipement.html">Équipement</a></li>
+            <li><a href="galerie.html">Galerie</a></li>
+            <li><a href="ressources.html">Ressources</a></li>
+        </ul>
+    </nav>
+
+    <div class="container">
+        <div class="hero">
+            <h2>Bienvenue dans l'Univers de la Photographie</h2>
+            <p>
+                La photographie est bien plus qu'un simple clic sur un bouton. C'est un art, une science et un moyen d'expression 
+                qui permet de capturer les moments précieux, de raconter des histoires et de partager notre vision unique du monde. 
+                Que vous soyez débutant avec votre premier appareil ou photographe expérimenté, ce guide vous accompagnera dans 
+                votre voyage photographique.
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h3>🎨 Qu'est-ce que la Photographie ?</h3>
+            <p>
+                Le mot "photographie" vient du grec "photos" (lumière) et "graphein" (écrire). Littéralement, photographier 
+                signifie "écrire avec la lumière". C'est l'essence même de cet art : capturer et figer la lumière pour créer 
+                une image permanente d'un moment éphémère.
+            </p>
+
+            <div class="grid-2col">
+                <div class="card">
+                    <h4>🎭 Un Art Visuel</h4>
+                    <p>
+                        La photographie est une forme d'expression artistique qui permet de communiquer des émotions, 
+                        de raconter des histoires et de partager des perspectives uniques. Chaque photographe développe 
+                        son propre style et sa vision créative.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h4>🔬 Une Science Technique</h4>
+                    <p>
+                        Maîtriser la photographie nécessite de comprendre les principes optiques, la chimie (pour l'argentique) 
+                        ou la technologie numérique. L'exposition, la mise au point et la composition reposent sur des bases 
+                        scientifiques solides.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h4>📖 Un Langage Universel</h4>
+                    <p>
+                        Une image peut transmettre des émotions et des messages au-delà des barrières linguistiques. 
+                        La photographie est un moyen de communication puissant qui parle à tous, quelle que soit leur culture.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h4>🕰️ Un Témoin du Temps</h4>
+                    <p>
+                        Les photographies sont des capsules temporelles qui préservent des moments, des personnes et des lieux 
+                        pour les générations futures. Elles documentent l'histoire et conservent nos souvenirs précieux.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h3>📜 Histoire de la Photographie</h3>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <h4>1826 - La Première Photographie</h4>
+                    <p>
+                        Nicéphore Niépce réalise la première photographie permanente "Vue de la fenêtre au Gras" 
+                        nécessitant 8 heures d'exposition. Cette image marque le début de l'aventure photographique.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>1839 - Le Daguerréotype</h4>
+                    <p>
+                        Louis Daguerre présente son procédé révolutionnaire à l'Académie des sciences de Paris. 
+                        Le daguerréotype réduit le temps d'exposition à quelques minutes et produit des images d'une netteté remarquable.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>1888 - Le Kodak</h4>
+                    <p>
+                        George Eastman lance le premier appareil Kodak avec le slogan "Vous appuyez sur le bouton, nous faisons le reste". 
+                        La photographie devient accessible au grand public.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>1936 - La Photographie Couleur</h4>
+                    <p>
+                        Kodak lance le Kodachrome, premier film couleur pour le grand public. La photographie entre 
+                        dans une nouvelle ère de couleurs vives et réalistes.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>1975 - Le Numérique Arrive</h4>
+                    <p>
+                        Steven Sasson invente le premier appareil photo numérique chez Kodak. Bien que pesant 3,6 kg 
+                        et produisant des images de 0,01 mégapixels, c'est le début d'une révolution.
+                    </p>
+                </div>
+
+                <div class="timeline-item">
+                    <h4>2000s - L'Ère des Smartphones</h4>
+                    <p>
+                        Les téléphones avec appareil photo intégré démocratisent totalement la photographie. 
+                        Instagram, lancé en 2010, transforme la façon dont nous partageons nos images.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="info-box">
+            <h4>💡 Le Saviez-vous ?</h4>
+            <p>
+                La première photographie d'une personne a été prise par accident en 1838 par Louis Daguerre. 
+                Sur son image du Boulevard du Temple à Paris, un homme se faisant cirer les chaussures est resté 
+                immobile assez longtemps (environ 10 minutes) pour apparaître sur la photo, alors que tout le reste 
+                de la circulation mouvante est invisible !
+            </p>
+        </div>
+
+        <div class="content-section">
+            <h3>🌟 Pourquoi Apprendre la Photographie ?</h3>
+            
+            <div class="grid-2col">
+                <div class="card">
+                    <h4>📸 Capturer des Souvenirs</h4>
+                    <p>
+                        Préservez les moments précieux de votre vie : naissances, mariages, voyages, moments en famille. 
+                        Des souvenirs tangibles que vous pourrez chérir et partager pendant des décennies.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h4>🎨 Développer sa Créativité</h4>
+                    <p>
+                        La photographie encourage à voir le monde différemment. Elle stimule votre créativité et vous 
+                        pousse à explorer de nouvelles perspectives, compositions et techniques artistiques.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h4>💼 Opportunités Professionnelles</h4>
+                    <p>
+                        De nombreuses carrières s'offrent aux photographes : mariage, mode, publicité, journalisme, 
+                        nature, portrait, immobilier, et bien d'autres domaines passionnants.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h4>🧘 Méditation Active</h4>
+                    <p>
+                        La photographie vous oblige à être présent dans l'instant, à observer attentivement votre 
+                        environnement. C'est une forme de pleine conscience qui apporte calme et concentration.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h4>🌍 Explorer le Monde</h4>
+                    <p>
+                        La photographie est une excellente motivation pour voyager, découvrir de nouveaux endroits 
+                        et cultures. Chaque lieu devient une opportunité de créer des images uniques.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h4>🤝 Créer des Connexions</h4>
+                    <p>
+                        Rejoignez une communauté mondiale de photographes passionnés. Partagez vos œuvres, 
+                        apprenez des autres et créez des amitiés durables autour de cette passion commune.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="quote">
+            "La photographie est une manière de sentir, de toucher, d'aimer. Ce que vous avez capturé 
+            en image est capturé pour toujours... elle se souvient des petites choses, bien après que 
+            vous ayez tout oublié."
+            <div style="margin-top: 20px; font-size: 18px; font-style: normal;">
+                - Aaron Siskind, Photographe
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h3>🚀 Par où Commencer ?</h3>
+            <p style="margin-bottom: 25px;">
+                Débuter en photographie peut sembler intimidant, mais avec les bonnes bases, vous progresserez rapidement :
+            </p>
+
+            <div class="grid-2col">
+                <div class="card">
+                    <h4>1️⃣ Connaître son Appareil</h4>
+                    <p>
+                        Que ce soit un reflex, un hybride ou un smartphone, prenez le temps de lire le manuel et 
+                        de comprendre les fonctionnalités de base. Expérimentez avec les différents modes.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h4>2️⃣ Maîtriser le Triangle d'Exposition</h4>
+                    <p>
+                        Comprenez la relation entre ISO, ouverture et vitesse d'obturation. Ces trois paramètres 
+                        contrôlent la quantité de lumière et l'apparence de vos photos.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h4>3️⃣ Apprendre la Composition</h4>
+                    <p>
+                        Étudiez la règle des tiers, les lignes directrices, la symétrie et d'autres techniques 
+                        de composition pour créer des images visuellement équilibrées et attrayantes.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h4>4️⃣ Pratiquer Régulièrement</h4>
+                    <p>
+                        Photographiez tous les jours, même des sujets ordinaires. La pratique constante est 
+                        le meilleur moyen de progresser et de développer votre œil photographique.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h4>5️⃣ Étudier les Grands Photographes</h4>
+                    <p>
+                        Analysez le travail de photographes célèbres : Ansel Adams, Henri Cartier-Bresson, 
+                        Steve McCurry. Comprenez leurs techniques et leur vision artistique.
+                    </p>
+                </div>
+
+                <div class="card">
+                    <h4>6️⃣ Accepter l'Échec</h4>
+                    <p>
+                        Toutes vos photos ne seront pas parfaites, et c'est normal ! Apprenez de vos erreurs, 
+                        expérimentez sans peur et continuez à vous améliorer jour après jour.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        
+        <p style="margin-top: 10px;">
+            <a href="techniques.html">Page Suivante : Techniques →<br></a>
+            
+            <a href="index.html"><br>🏠 Retour à l'Accueil</a>
+        </p>
+        <p><br>© 2026 Achraf BECOURI - Tous droits réservés</p>
+    </footer>
+</body>
+</html>
